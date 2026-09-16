@@ -85,6 +85,7 @@ const TestimonialSection = () => {
               ref={(el) => (vdRef.current[index] = el)}
               src={card.src}
               playsInline
+              autoPlay
               muted
               loop
               className="size-full object-cover"
