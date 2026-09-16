@@ -54,7 +54,7 @@ const FooterSection = () => {
 
           {isMobile ? (
             <img
-              src="/images/footer-drisnk.png"
+              src="/images/footer-drink.png"
               alt="Freshly brewed coffee"
               className="absolute inset-0 w-full h-full object-contain"
             />
