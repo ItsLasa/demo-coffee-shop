@@ -203,13 +203,13 @@ body::-webkit-scrollbar {
         }
 
         .slider-wrapper {
-            @apply lg:h-dvh min-h-dvh md:min-h-fit w-full mt-0 md:mt-20 xl:mt-0;
+            @apply lg:h-dvh min-h-dvh md:min-h-fit w-full mt-10 md:mt-20 xl:mt-0;
 
             .flavors {
-                @apply h-full w-full flex md:flex-row flex-col items-center 2xl:gap-72 lg:gap-52 md:gap-24 gap-7 flex-nowrap;
+                @apply h-full w-full flex lg:flex-row flex-col items-center 2xl:gap-72 lg:gap-52 md:gap-16 gap-10 flex-nowrap py-6 md:py-0;
 
                 .drinks {
-                    @apply absolute left-1/2 -translate-x-1/2 bottom-0 md:h-full h-80;
+                    @apply lg:absolute lg:left-1/2 lg:-translate-x-1/2 lg:bottom-0 lg:h-full;
                 }
 
                 .elements {
@@ -224,34 +224,10 @@ body::-webkit-scrollbar {
     }
 
     .nutrition-section {
-        @apply min-h-dvh 2xl:h-[120dvh] overflow-hidden relative;
-
-        .big-img {
-            @apply w-full absolute 2xl:h-full md:h-2/3 h-1/2 left-0 bottom-0 object-bottom 2xl:object-contain object-cover;
-        }
-
-        .nutrition-title {
-            @apply 2xl:max-w-4xl xl:max-w-2xl md:py-0 py-3 md:pb-5 pb-0 lg:pb-0 md:text-center text-[#513022];
-        }
+        @apply min-h-dvh overflow-hidden relative;
 
         .nutrition-text-scroll {
-            @apply rotate-[-3deg] border-[.5vw] border-[#e3d3bc] text-nowrap opacity-0 md:-mt-32 -mt-24;
-        }
-
-        .nutrition-box {
-            @apply absolute md:bottom-16 bottom-5 w-full md:px-0 px-5;
-
-            .list-wrapper {
-                @apply bg-[#fdebd2] rounded-full border-[.5vw] border-[#e8ddca] mx-auto max-w-7xl md:py-8 py-5 md:px-0 px-5 flex justify-between items-center;
-
-                p {
-                    @apply text-[#865720];
-                }
-            }
-
-            .spacer-border {
-                @apply absolute right-0 top-1/2 transform -translate-y-1/2 md:h-24 h-16 w-px bg-[#C89C6E];
-            }
+            @apply opacity-0;
         }
     }
 
@@ -263,34 +239,34 @@ body::-webkit-scrollbar {
         }
 
         .first-title {
-            @apply rotate-[3deg] relative z-10;
+            @apply rotate-[2deg] md:rotate-[3deg] relative z-10;
         }
 
         .second-title {
-            @apply rotate-[-1deg] md:-translate-y-5;
+            @apply rotate-[-1deg] -translate-y-2 sm:-translate-y-3 md:-translate-y-5;
         }
 
         .third-title {
-            @apply rotate-[1deg] md:-translate-y-12 relative z-10;
+            @apply rotate-[1deg] -translate-y-4 sm:-translate-y-6 md:-translate-y-10 relative z-10;
         }
 
         .fourth-title {
-            @apply rotate-[-5deg] md:-translate-y-12;
+            @apply rotate-[-2deg] md:rotate-[-5deg] -translate-y-6 sm:-translate-y-8 md:-translate-y-12;
         }
 
         .vd-pin-section {
-            @apply md:h-[110vh] h-dvh overflow-hidden md:!-translate-y-[15%] md:mt-0 mt-20;
+            @apply md:h-[110vh] h-[75dvh] sm:h-[85dvh] overflow-hidden md:!-translate-y-[15%] md:mt-0 mt-12;
 
             video {
                 @apply size-full absolute inset-0 object-cover;
             }
 
             .play-btn {
-                @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-[9vw] flex justify-center items-center bg-[#ffffff1a] backdrop-blur-xl rounded-full;
+                @apply w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 flex justify-center items-center bg-[#ffffff20] backdrop-blur-xl rounded-full border border-white/20 shadow-lg;
             }
 
             img:first-of-type {
-                @apply size-[15vw];
+                @apply w-16 sm:w-24 md:w-32;
             }
         }
     }
@@ -299,47 +275,44 @@ body::-webkit-scrollbar {
   @apply relative w-full bg-milk overflow-hidden;
 
   /* Responsive section height */
-  min-height: 100dvh;
-  height: clamp(100dvh, 120dvh, 1200px);
+  min-height: 85dvh;
+  height: clamp(520px, 85dvh, 1200px);
+
+  @media (min-width: 768px) {
+    min-height: 100dvh;
+    height: clamp(100dvh, 120dvh, 1200px);
+  }
 
   .pin-box {
-    @apply absolute flex items-center justify-center w-full;
+    @apply absolute flex items-center justify-start md:justify-center w-full overflow-x-auto md:overflow-x-visible pb-4 md:pb-0;
 
-    /*
-      Responsive positioning
-      Keeps the cards inside the viewport
-    */
-    bottom: clamp(3rem, 10vh, 8rem);
+    /* Responsive positioning: closer to text on mobile */
+    bottom: clamp(1.5rem, 5vh, 8rem);
 
-    padding-left: clamp(1rem, 8vw, 13rem);
+    padding-left: clamp(1rem, 5vw, 13rem);
     padding-right: clamp(1rem, 5vw, 8rem);
+
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     .vd-card {
       @apply flex-none overflow-hidden border-milk;
 
-      /*
-        Smooth card sizing
-      */
-      width: clamp(15rem, 25vw, 24rem);
+      /* Smooth card sizing */
+      width: clamp(11rem, 22vw, 24rem);
+      height: clamp(17rem, 36vw, 36rem);
 
-      /*
-        Responsive rounded corners
-      */
+      /* Responsive rounded corners */
       border-radius: clamp(1rem, 2vw, 2rem);
 
-      /*
-        Responsive border
-      */
-      border-width: clamp(3px, 0.45vw, 7px);
+      /* Responsive border */
+      border-width: clamp(2px, 0.45vw, 7px);
 
-      /*
-        Cards overlap naturally
-      */
-      margin-left: clamp(-8rem, -7vw, -4rem);
+      /* Cards overlap smoothly on larger screens, gentle spacing on mobile */
+      margin-left: clamp(-3rem, -6vw, -2rem);
 
-      /*
-        Desktop positioning
-      */
       position: relative;
 
       &:first-child {
@@ -353,21 +326,16 @@ body::-webkit-scrollbar {
   ========================== */
 
   h1 {
-    @apply uppercase font-bold;
+    @apply uppercase font-bold text-center;
 
-    font-size: clamp(5rem, 20.5vw, 22rem);
+    font-size: clamp(3.5rem, 15vw, 20rem);
 
-    line-height: 0.95;
+    line-height: 0.9;
 
-    letter-spacing: -0.055em;
-
-    margin-left: clamp(0.5rem, 2vw, 2rem);
+    letter-spacing: -0.04em;
 
     white-space: nowrap;
 
-    /*
-      Prevent accidental horizontal overflow
-    */
     max-width: 100%;
   }
 }
