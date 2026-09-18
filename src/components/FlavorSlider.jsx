@@ -68,7 +68,7 @@ const FlavorSlider = () => {
         },
         "<"
       );
-  }, [isMobile, isTablet]);
+  }, [ isTablet]);
 
   return (
     <div ref={sliderRef} className="slider-wrapper">
