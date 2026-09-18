@@ -106,9 +106,13 @@ const HeroSection = () => {
             </div>
           </div>
 
-          <h2 className="  text-black " >
-            Slow down, take a sip, and enjoy the little moments. Discover handcrafted coffee made from carefully selected beans, roasted for rich aroma, smooth flavor, and an unforgettable taste.
-          </h2>
+          <div className="bg-[#FFF4E8]/5 backdrop-blur-md px-5 py-4 shadow-sm">
+  <h3 className="text-[#0e0e0e] text-center text-sm md:text-lg leading-relaxed font-medium">
+    Slow down, take a sip, and enjoy the little moments. Discover handcrafted
+    coffee made from carefully selected beans, roasted for rich aroma, smooth
+    flavor, and an unforgettable taste.
+  </h3>
+</div>
 
           <div className='hero-button'>
             <p>Explore Our Coffee</p>
