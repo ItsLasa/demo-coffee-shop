@@ -10,6 +10,7 @@ import NutritionSection from "./sections/NutritionSection.jsx";
 import BenefitSection from "./sections/BenefitSection.jsx";
 import TestimonialSection from "./sections/TestimonialSection.jsx";
 import FooterSection from "./sections/FooterSection.jsx";
+import ScrollToTop from "./components/ScrollToTop.jsx";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -38,6 +39,7 @@ const App = () => {
           <FooterSection />
         </div>
       </div>
+      <ScrollToTop />
     </main>
   );
 };
