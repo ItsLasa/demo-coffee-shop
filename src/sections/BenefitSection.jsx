@@ -44,10 +44,10 @@ const BenefitSection = () => {
     <section className='benefit-section'>
       <div className='container mx-auto pt-20'>
         <div className='col-center'>
-          <p>
+          <span className=" text-white text-center ">
            More Than a Cup: <br />
          Discover the Art Behind Every Sip
-          </p>
+          </span>
 
           <div className='mt-20 col-center'>
             <ClipPathTitle
@@ -80,9 +80,9 @@ const BenefitSection = () => {
             />
           </div>
 
-          <div className='md:mt-0 mt-10'>
+          {/* <div className='md:mt-0 mt-10'>
             <p>And much more ...</p>
-          </div>
+          </div> */}
         </div>
       </div>
 
