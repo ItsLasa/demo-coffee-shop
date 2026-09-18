@@ -71,7 +71,8 @@ const MessageSection = () => {
             <div className="container mx-auto flex-center py-28 relative">
                 <div className="w-full h-full">
                     <div className="msg-wrapper">
-                        <h1 className="first-message">Awaken your senses and</h1>
+                        <h1 className="first-message">Awaken your senses And</h1>
+                             <h1 className="first-message"> </h1>
 
                         <div
                             style={{
@@ -79,7 +80,7 @@ const MessageSection = () => {
                             }}
                             className="msg-text-scroll"
                         >
-                            <div className="bg-light-brown md:pb-5 pb-3 px-5">
+                            <div className="bg-light-brown  md:pb-5 pb-3 px-5">
                                 <h2 className="text-red-brown">Fuel Up</h2>
                             </div>
                         </div>
@@ -93,10 +94,10 @@ const MessageSection = () => {
 
                     <div className="flex-center md:mt-20 mt-10">
                         <div className="max-w-md px-10 text-2xl flex-center overflow-hidden">
-                            <p>
+                            <span className=" text-center">
                                 Wake up your spirit and fuel your day with every sip bold coffee, good energy, and unforgettable moments.
 
-                            </p>
+                            </span>
                         </div>
                     </div>
                 </div>
