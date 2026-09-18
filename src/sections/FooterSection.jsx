@@ -2,46 +2,109 @@
 import { useMediaQuery } from "react-responsive";
 
 const FooterSection = () => {
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
-
   return (
     <section className="footer-section relative overflow-hidden bg-[#1C120D] text-[#F5EBDD]">
-      {/* Decorative top curve */}
+
+      {/* =========================
+          DECORATIVE TOP CURVE
+      ========================== */}
       <img
         src="/images/footer-dip.png"
         alt=""
-        className="w-full object-cover -translate-y-1"
+        className="w-full h-auto object-cover -translate-y-px"
       />
 
-      <div className="relative min-h-screen px-5 md:px-10 pt-[10vh] md:pt-[15vh] pb-8">
+      <div className="relative px-4 xs:px-5 sm:px-6 md:px-8 lg:px-10 xl:px-14 2xl:px-20 pt-[8vh] sm:pt-[10vh] lg:pt-[12vh] xl:pt-[15vh] pb-6 sm:pb-8">
 
-        {/* Background glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-[15%] left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-[#8B5E3C]/20 blur-[120px]" />
+        {/* =========================
+            BACKGROUND GLOW
+        ========================== */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div
+            className="
+              absolute
+              top-[12%]
+              left-1/2
+              -translate-x-1/2
+              w-[220px] h-[220px]
+              sm:w-[320px] sm:h-[320px]
+              md:w-[420px] md:h-[420px]
+              lg:w-[500px] lg:h-[500px]
+              xl:w-[600px] xl:h-[600px]
+              rounded-full
+              bg-[#8B5E3C]/20
+              blur-[80px]
+              sm:blur-[100px]
+              lg:blur-[120px]
+            "
+          />
         </div>
 
         {/* =========================
             BIG BRAND STATEMENT
         ========================== */}
-        <div className="relative z-10 text-center">
+        <div className="relative z-10 text-center max-w-7xl mx-auto">
 
-          <p className="uppercase tracking-[0.4em] text-sm md:text-4xl opacity-70 mb-5">
+          <p
+            className="
+              uppercase
+              tracking-[0.2em]
+              sm:tracking-[0.3em]
+              lg:tracking-[0.4em]
+              text-[10px]
+              sm:text-xs
+              md:text-sm
+              lg:text-base
+              xl:text-lg
+              opacity-70
+              mb-3
+              sm:mb-4
+              lg:mb-5
+            "
+          >
             Brew something unforgettable
           </p>
 
-          <div className="overflow-hidden">
-            <h1 className="general-title text-center">
+          <div className="overflow-hidden p-4">
+            <h1
+              className="
+      general-title
+      text-center
+      text-[clamp(3rem,10vw,9rem)]
+      leading-[1]
+      sm:leading-[0.95]
+      md:leading-[0.85]
+    "
+            >
               GOOD COFFEE
               <br />
-              <span className=" font-light">
+              <span className="inline-block mt-4 sm:mt-0 font-light">
                 GOOD MOOD
               </span>
             </h1>
           </div>
 
-          <p className="max-w-xl mx-auto mt-6 text-sm md:text-2xl leading-relaxed opacity-80">
+          <p
+            className="
+              max-w-[280px]
+              sm:max-w-sm
+              md:max-w-lg
+              lg:max-w-xl
+              xl:max-w-2xl
+              mx-auto
+              mt-5
+              sm:mt-6
+              lg:mt-8
+              text-xs
+              sm:text-sm
+              md:text-base
+              lg:text-lg
+              xl:text-xl
+              2xl:text-2xl
+              leading-relaxed
+              opacity-80
+            "
+          >
             From the first aroma to the final sip, every cup is crafted
             to make your everyday moments a little better.
           </p>
@@ -49,44 +112,59 @@ const FooterSection = () => {
 
         {/* =========================
             COFFEE VISUAL
+            Hidden on mobile
         ========================== */}
-        <div className="relative h-[280px] md:h-full flex justify-center items-center">
-
-          {isMobile ? (
-            <img
-              src="/images/footer-drink.png"
-              alt="Freshly brewed coffee"
-              className="absolute inset-0 w-full h-full object-contain"
-            />
-          ) : (
-            <video
-              src="/videos/splash.mp4"
-              autoPlay
-              loop
-              playsInline
-              muted
-              className="absolute inset-0 w-full h-full object-contain mix-blend-screen"
-            />
-          )}
-
-          {/* Floating label */}
-          {/* <div className="absolute bottom-5 left-5 md:left-20 rotate-[-6deg]">
-            <p className="text-xs uppercase tracking-[0.3em] opacity-60">
-              Roasted with passion
-            </p>
-          </div> */}
-
-          {/* <div className="absolute top-10 right-5 md:right-20 rotate-[6deg]">
-            <p className="text-xs uppercase tracking-[0.3em] opacity-60">
-              Brewed with soul
-            </p>
-          </div> */}
-        </div>
+        {/* <div
+          className="
+            relative
+            hidden
+            md:flex
+            w-full
+            h-[280px]
+            lg:h-[360px]
+            xl:h-[440px]
+            2xl:h-[520px]
+            items-center
+            justify-center
+            mt-6
+            lg:mt-10
+          "
+        >
+          <video
+            src="/videos/splash.mp4"
+            autoPlay
+            loop
+            playsInline
+            muted
+            className="
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-contain
+              mix-blend-screen
+            "
+          />
+        </div> */}
 
         {/* =========================
             SOCIAL
         ========================== */}
-        <div className="relative z-10 flex justify-center gap-4 mt-5">
+        <div
+          className="
+            relative
+            z-10
+            flex
+            justify-center
+            items-center
+            gap-3
+            sm:gap-4
+            lg:gap-5
+            mt-8
+            md:mt-4
+            lg:mt-8
+          "
+        >
 
           <a
             href="#"
@@ -96,7 +174,14 @@ const FooterSection = () => {
             <img
               src="/images/yt.svg"
               alt="YouTube"
-              className="transition-transform duration-300 group-hover:scale-110"
+              className="
+                w-5 h-5
+                sm:w-6 sm:h-6
+                lg:w-7 lg:h-7
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
             />
           </a>
 
@@ -108,7 +193,14 @@ const FooterSection = () => {
             <img
               src="/images/insta.svg"
               alt="Instagram"
-              className="transition-transform duration-300 group-hover:scale-110"
+              className="
+                w-5 h-5
+                sm:w-6 sm:h-6
+                lg:w-7 lg:h-7
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
             />
           </a>
 
@@ -120,7 +212,14 @@ const FooterSection = () => {
             <img
               src="/images/tiktok.svg"
               alt="TikTok"
-              className="transition-transform duration-300 group-hover:scale-110"
+              className="
+                w-5 h-5
+                sm:w-6 sm:h-6
+                lg:w-7 lg:h-7
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
             />
           </a>
 
@@ -129,124 +228,307 @@ const FooterSection = () => {
         {/* =========================
             FOOTER CONTENT
         ========================== */}
-        <div className="relative z-10 mt-28 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-20">
+        <div
+          className="
+            relative
+            z-10
+            mt-20
+            sm:mt-24
+            md:mt-28
+            lg:mt-36
+            xl:mt-40
+            grid
+            grid-cols-1
+            md:grid-cols-2
+            lg:grid-cols-3
+            gap-10
+            sm:gap-12
+            md:gap-14
+            lg:gap-16
+            xl:gap-20
+            max-w-7xl
+            mx-auto
+          "
+        >
 
-          {/* Brand */}
+          {/* =========================
+              BRAND
+          ========================== */}
           <div>
-            <h3 className="text-2xl md:text-3xl font-bold tracking-tight">
+            <h3
+              className="
+                text-xl
+                sm:text-2xl
+                md:text-3xl
+                font-bold
+                tracking-tight
+              "
+            >
               Coffe<span className="italic">.</span>
             </h3>
 
-            <p className="mt-4 max-w-xs text-lg leading-relaxed opacity-60">
+            <p
+              className="
+                mt-3
+                sm:mt-4
+                max-w-xs
+                text-sm
+                sm:text-base
+                md:text-lg
+                leading-relaxed
+                opacity-60
+              "
+            >
               Your daily ritual, brewed better.
               Fresh beans, bold flavors, unforgettable moments.
             </p>
           </div>
 
-          {/* Navigation */}
-          <div className="grid grid-cols-2 gap-10">
+          {/* =========================
+              NAVIGATION
+          ========================== */}
+          <div className="grid grid-cols-2 gap-8 sm:gap-10">
 
+            {/* Explore */}
             <div>
-              <p className="text-lg uppercase tracking-[0.3em] opacity-40 mb-5">
+              <p
+                className="
+                  text-[10px]
+                  sm:text-xs
+                  md:text-sm
+                  uppercase
+                  tracking-[0.2em]
+                  sm:tracking-[0.3em]
+                  opacity-40
+                  mb-4
+                  sm:mb-5
+                "
+              >
                 Explore
               </p>
 
-              <div className="space-y-3 text-sm md:text-base">
-                <a href="#home" className="block hover:opacity-60 transition">
+              <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm md:text-base">
+
+                <a
+                  href="#home"
+                  className="block hover:opacity-60 transition"
+                >
                   Home
                 </a>
 
-                <a href="#menu" className="block hover:opacity-60 transition">
+                <a
+                  href="#menu"
+                  className="block hover:opacity-60 transition"
+                >
                   Our Menu
                 </a>
 
-                <a href="#about" className="block hover:opacity-60 transition">
+                <a
+                  href="#about"
+                  className="block hover:opacity-60 transition"
+                >
                   Our Story
                 </a>
 
-                <a href="#locations" className="block hover:opacity-60 transition">
+                <a
+                  href="#locations"
+                  className="block hover:opacity-60 transition"
+                >
                   Locations
                 </a>
+
               </div>
             </div>
 
+            {/* Connect */}
             <div>
-              <p className="text-lg uppercase tracking-[0.3em] opacity-40 mb-5">
+              <p
+                className="
+                  text-[10px]
+                  sm:text-xs
+                  md:text-sm
+                  uppercase
+                  tracking-[0.2em]
+                  sm:tracking-[0.3em]
+                  opacity-40
+                  mb-4
+                  sm:mb-5
+                "
+              >
                 Connect
               </p>
 
-              <div className="space-y-3 text-sm md:text-base">
-                <a href="#contact" className="block hover:opacity-60 transition">
+              <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm md:text-base">
+
+                <a
+                  href="#contact"
+                  className="block hover:opacity-60 transition"
+                >
                   Contact
                 </a>
 
-                <a href="#instagram" className="block hover:opacity-60 transition">
+                <a
+                  href="#instagram"
+                  className="block hover:opacity-60 transition"
+                >
                   Instagram
                 </a>
 
-                <a href="#tiktok" className="block hover:opacity-60 transition">
+                <a
+                  href="#tiktok"
+                  className="block hover:opacity-60 transition"
+                >
                   TikTok
                 </a>
 
-                <a href="#youtube" className="block hover:opacity-60 transition">
+                <a
+                  href="#youtube"
+                  className="block hover:opacity-60 transition"
+                >
                   YouTube
                 </a>
+
               </div>
             </div>
 
           </div>
 
-          {/* Newsletter */}
+          {/* =========================
+              NEWSLETTER
+          ========================== */}
           <div>
-            <p className="text-xs uppercase tracking-[0.3em] opacity-40 mb-5">
+
+            <p
+              className="
+                text-[10px]
+                sm:text-xs
+                uppercase
+                tracking-[0.2em]
+                sm:tracking-[0.3em]
+                opacity-40
+                mb-4
+                sm:mb-5
+              "
+            >
               Stay in the loop
             </p>
 
-            <p className="text-sm md:text-xl ading-relaxed opacity-75">
+            <p
+              className="
+                text-xs
+                sm:text-sm
+                md:text-base
+                lg:text-lg
+                xl:text-xl
+                leading-relaxed
+                opacity-75
+                max-w-lg
+              "
+            >
               Get fresh updates, new menu drops, special events,
               and good coffee delivered straight to your inbox.
             </p>
 
-            <div className="flex items-center border-b border-[#F5EBDD]/30 mt-8 pb-4">
+            <div
+              className="
+                flex
+                items-center
+                border-b
+                border-[#F5EBDD]/30
+                mt-6
+                sm:mt-8
+                pb-3
+                sm:pb-4
+              "
+            >
 
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full bg-transparent outline-none placeholder:text-[#F5EBDD]/40 text-sm"
+                className="
+                  w-full
+                  min-w-0
+                  bg-transparent
+                  outline-none
+                  placeholder:text-[#F5EBDD]/40
+                  text-xs
+                  sm:text-sm
+                "
               />
 
               <button
                 type="submit"
-                className="ml-3 hover:translate-x-1 transition-transform"
+                className="
+                  ml-3
+                  shrink-0
+                  hover:translate-x-1
+                  transition-transform
+                "
               >
                 <img
                   src="/images/arrow.svg"
                   alt="Subscribe"
-                  className="w-5 invert"
+                  className="w-4 h-4 sm:w-5 sm:h-5 invert"
                 />
               </button>
 
             </div>
           </div>
+
         </div>
 
         {/* =========================
             BOTTOM BAR
         ========================== */}
-        <div className="relative z-10 mt-20 md:mt-28 pt-6 border-t border-[#F5EBDD]/10 flex flex-col md:flex-row justify-between gap-4 text-lg opacity-50">
+        <div
+          className="
+            relative
+            z-10
+            mt-16
+            sm:mt-20
+            md:mt-24
+            lg:mt-28
+            pt-5
+            sm:pt-6
+            border-t
+            border-[#F5EBDD]/10
+            flex
+            flex-col
+            md:flex-row
+            justify-between
+            items-start
+            md:items-center
+            gap-4
+            text-[10px]
+            sm:text-xs
+            md:text-sm
+            lg:text-base
+            opacity-50
+            max-w-7xl
+            mx-auto
+          "
+        >
 
           <p>
             © 2026 Coffe. All rights reserved.
           </p>
 
-          <div className="flex gap-6">
-            <a href="#privacy" className="hover:opacity-100 transition">
+          <div className="flex gap-4 sm:gap-6">
+
+            <a
+              href="#privacy"
+              className="hover:opacity-100 transition"
+            >
               Privacy Policy
             </a>
 
-            <a href="#terms" className="hover:opacity-100 transition">
+            <a
+              href="#terms"
+              className="hover:opacity-100 transition"
+            >
               Terms of Service
             </a>
+
           </div>
 
         </div>
