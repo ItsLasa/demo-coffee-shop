@@ -16,10 +16,12 @@ const FlavorSlider = () => {
   });
 
   useGSAP(() => {
-    // Completely disable GSAP scroll animations on mobile
+    // Skip all GSAP setup on mobile — no scroll listeners, no timelines
     if (isMobile) return;
 
-    const scrollAmount = sliderRef.current ? sliderRef.current.scrollWidth - window.innerWidth : 0;
+    const scrollAmount = sliderRef.current
+      ? sliderRef.current.scrollWidth - window.innerWidth
+      : 0;
 
     if (!isTablet) {
       const tl = gsap.timeline({
@@ -68,7 +70,7 @@ const FlavorSlider = () => {
         },
         "<"
       );
-  }, [ isTablet]);
+  }, [isTablet, isMobile]);
 
   return (
     <div ref={sliderRef} className="slider-wrapper">
@@ -85,9 +87,6 @@ const FlavorSlider = () => {
             const rotations = ["-rotate-2", "rotate-2", "-rotate-1", "rotate-3"];
 
             return isMobile ? (
-              /* =========================
-                 3D CARD (MOBILE VIEW ONLY)
-              ========================== */
               <div
                 key={image}
                 className="flavor-card-container relative z-30 w-full max-w-[320px] sm:max-w-[360px] flex-none px-4 py-5"
@@ -98,15 +97,9 @@ const FlavorSlider = () => {
                     border-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]
                     transform ${rotations[index % rotations.length]}
                     backdrop-blur-md`}
-                  style={{
-                    perspective: "1000px",
-                    transformStyle: "preserve-3d",
-                  }}
                 >
-                  {/* Subtle 3D reflective highlight */}
                   <div className="absolute -top-24 -left-24 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-                  {/* Flavor title & badge on card */}
                   <div className="w-full flex justify-between items-start z-10">
                     <span className="text-xs uppercase tracking-[0.25em] text-[#faeade]/70 font-semibold px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm border border-white/10">
                       0{index + 1}
@@ -116,7 +109,6 @@ const FlavorSlider = () => {
                     </span>
                   </div>
 
-                  {/* Bottle / Drink graphic with 3D elevation */}
                   <div className="relative w-full flex-1 flex items-center justify-center my-2 z-10 pointer-events-none select-none">
                     <img
                       src={`/${image}`}
@@ -125,7 +117,6 @@ const FlavorSlider = () => {
                     />
                   </div>
 
-                  {/* Card bottom footer */}
                   <div className="w-full text-center z-10 pt-2 border-t border-white/10">
                     <h3 className="text-xl font-bold uppercase text-[#faeade] tracking-wide">
                       {flavor.name}
@@ -137,9 +128,6 @@ const FlavorSlider = () => {
                 </div>
               </div>
             ) : (
-              /* =========================
-                 STANDARD SLIDER (DESKTOP & TABLET)
-              ========================== */
               <div
                 key={image}
                 className={`relative z-30 lg:w-[50vw] md:w-[90vw] lg:h-[70vh] md:h-[50vh] flex-none ${
