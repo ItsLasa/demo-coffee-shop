@@ -85,32 +85,31 @@ const HeroSection = () => {
           />
         )}
         <div className='hero-content opacity-0'>
-          
+
           <div className='overflow-hidden'>
-            
-            <h1 className='hero-title'>Brewed to Perfection</h1>
+
+            <h1 className='hero-title '>Brewed to Perfection</h1>
           </div>
-          
+
           <div
             style={{
               clipPath: "polygon(50% 0, 50% 0, 50% 100%, 50% 100%)",
             }}
             className='hero-text-scroll'
           >
-           
+
             <div className='hero-subtitle'>
-              
+
               <h1>Freshly Roasted • Richly Brewed</h1>
             </div>
           </div>
-
-          <div className="bg-[#FFF4E8]/5 backdrop-blur-md px-5 py-4 shadow-sm">
-  <h3 className="text-[#0e0e0e] text-center text-sm md:text-lg leading-relaxed font-medium">
-    Slow down, take a sip, and enjoy the little moments. Discover handcrafted
-    coffee made from carefully selected beans, roasted for rich aroma, smooth
-    flavor, and an unforgettable taste.
-  </h3>
-</div>
+          <div className="hidden md:block bg-[#FFF4E8]/1 backdrop-blur-md px-5 py-4 shadow-sm">
+            <h3 className="text-[#0e0e0e] text-center text-sm md:text-lg leading-relaxed font-medium">
+              Slow down, take a sip, and enjoy the little moments. Discover handcrafted
+              coffee made from carefully selected beans, roasted for rich aroma, smooth
+              flavor, and an unforgettable taste.
+            </h3>
+          </div>
 
           <div className='hero-button'>
             <a href='#flavor-section' aria-label='Explore Our Coffee Menu'>Explore Our Coffee</a>
