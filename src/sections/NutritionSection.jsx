@@ -65,7 +65,7 @@ const NutritionSection = () => {
   });
 
   return (
-    <section className="nutrition-section flex flex-col justify-between">
+    <section id="locations" className="nutrition-section flex flex-col justify-between">
       <img
         src="/images/slider-dip.png"
         alt=""
