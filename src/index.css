@@ -78,10 +78,10 @@ body::-webkit-scrollbar {
       @apply text-[#030e1b] font-bold uppercase text-center;
 
       font-size: clamp(3rem, 8.5vw, 8.5rem);
-      line-height: 0.88;
+      line-height: 1;
       letter-spacing: -0.055em;
 
-      margin-bottom: clamp(1rem, 2vw, 2rem);
+      margin-bottom: clamp(1.5rem, 2vw, 2rem);
 
       /* Prevent extremely long text from overflowing */
       max-width: 95vw;
@@ -106,7 +106,7 @@ body::-webkit-scrollbar {
           @apply uppercase font-bold text-[#fce1cd] text-center;
 
           font-size: clamp(2.6rem, 8vw, 8.5rem);
-          line-height: 0.9;
+          line-height: 1;
           letter-spacing: -0.055em;
 
           padding-left: clamp(0.75rem, 1.2vw, 1.5rem);
