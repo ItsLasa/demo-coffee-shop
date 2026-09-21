@@ -167,7 +167,9 @@ const FooterSection = () => {
         >
 
           <a
-            href="#"
+            href="https://www.youtube.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="social-btn group"
             aria-label="YouTube"
           >
@@ -186,7 +188,9 @@ const FooterSection = () => {
           </a>
 
           <a
-            href="#"
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="social-btn group"
             aria-label="Instagram"
           >
@@ -205,7 +209,9 @@ const FooterSection = () => {
           </a>
 
           <a
-            href="#"
+            href="https://www.tiktok.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="social-btn group"
             aria-label="TikTok"
           >
@@ -264,7 +270,7 @@ const FooterSection = () => {
                 tracking-tight
               "
             >
-              Coffe<span className="italic">.</span>
+              Coffee<span className="italic">.</span>
             </h3>
 
             <p
@@ -317,7 +323,7 @@ const FooterSection = () => {
                 </a>
 
                 <a
-                  href="#menu"
+                  href="#flavor-section"
                   className="block hover:opacity-60 transition"
                 >
                   Our Menu
@@ -361,28 +367,34 @@ const FooterSection = () => {
               <div className="space-y-2.5 sm:space-y-3 text-xs sm:text-sm md:text-base">
 
                 <a
-                  href="#contact"
+                  href="#newsletter"
                   className="block hover:opacity-60 transition"
                 >
                   Contact
                 </a>
 
                 <a
-                  href="#instagram"
+                  href="https://www.instagram.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block hover:opacity-60 transition"
                 >
                   Instagram
                 </a>
 
                 <a
-                  href="#tiktok"
+                  href="https://www.tiktok.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block hover:opacity-60 transition"
                 >
                   TikTok
                 </a>
 
                 <a
-                  href="#youtube"
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block hover:opacity-60 transition"
                 >
                   YouTube
@@ -396,7 +408,7 @@ const FooterSection = () => {
           {/* =========================
               NEWSLETTER
           ========================== */}
-          <div>
+          <div id="newsletter">
 
             <p
               className="
@@ -429,7 +441,15 @@ const FooterSection = () => {
               and good coffee delivered straight to your inbox.
             </p>
 
-            <div
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const email = e.target.elements.email.value.trim();
+                if (email) {
+                  alert(`Thanks! You're subscribed with ${email}`);
+                  e.target.reset();
+                }
+              }}
               className="
                 flex
                 items-center
@@ -444,6 +464,8 @@ const FooterSection = () => {
 
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Your email address"
                 className="
                   w-full
@@ -458,6 +480,7 @@ const FooterSection = () => {
 
               <button
                 type="submit"
+                aria-label="Subscribe"
                 className="
                   ml-3
                   shrink-0
@@ -472,7 +495,7 @@ const FooterSection = () => {
                 />
               </button>
 
-            </div>
+            </form>
           </div>
 
         </div>
@@ -510,20 +533,20 @@ const FooterSection = () => {
         >
 
           <p>
-            © 2026 Coffe. All rights reserved.
+            <span className="font-bold opacity-80">Biggy Coffee</span> &nbsp;·&nbsp; © 2026 Coffee. All rights reserved.
           </p>
 
           <div className="flex gap-4 sm:gap-6">
 
             <a
-              href="#privacy"
+              href="/privacy-policy"
               className="hover:opacity-100 transition"
             >
               Privacy Policy
             </a>
 
             <a
-              href="#terms"
+              href="/terms-of-service"
               className="hover:opacity-100 transition"
             >
               Terms of Service
