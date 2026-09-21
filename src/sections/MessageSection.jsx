@@ -1,9 +1,36 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { SplitText } from "gsap/all";
+import { useMediaQuery } from "react-responsive";
 
 const MessageSection = () => {
+    const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
+
     useGSAP(() => {
+        // Skip complex SplitText animations on mobile — they break due to
+        // word wrapping at small viewports; simple fade-in is used instead.
+        if (isMobile) {
+            gsap.to(".message-content .msg-wrapper h1", {
+                color: "#faeade",
+                duration: 0.8,
+                stagger: 0.3,
+                scrollTrigger: {
+                    trigger: ".message-content",
+                    start: "top 80%",
+                },
+            });
+            gsap.to(".msg-text-scroll", {
+                duration: 0.8,
+                clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                ease: "circ.inOut",
+                scrollTrigger: {
+                    trigger: ".msg-text-scroll",
+                    start: "top 90%",
+                },
+            });
+            return;
+        }
+
         const firstMsgSplit = SplitText.create(".first-message", {
             type: "words",
         });
@@ -64,10 +91,10 @@ const MessageSection = () => {
             duration: 1,
             stagger: 0.01,
         });
-    });
+    }, [isMobile]);
 
     return (
-        <section className="message-content">
+        <section id="about" className="message-content">
             <div className="container mx-auto flex-center py-28 relative">
                 <div className="w-full h-full">
                     <div className="msg-wrapper">
