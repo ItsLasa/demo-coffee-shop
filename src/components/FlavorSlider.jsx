@@ -1,148 +1,97 @@
 import { useGSAP } from "@gsap/react";
-import { flavorless } from "../constants";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef } from "react";
-import { useMediaQuery } from "react-responsive";
+import { flavorless } from "../constants";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const images = [
+  "coffe-slider-1.png",
+  "coffe-slider-2.png",
+  "coffe-slider-3.png",
+  "coffe-slider-4.png",
+];
+
+const rotations = ["lg:-rotate-2", "lg:rotate-2", "lg:-rotate-1", "lg:rotate-3"];
 
 const FlavorSlider = () => {
-  const sliderRef = useRef();
-
-  const isTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
-
-  const isMobile = useMediaQuery({
-    query: "(max-width: 768px)",
-  });
+  const sliderRef = useRef(null);
 
   useGSAP(() => {
-    // Skip all GSAP setup on mobile — no scroll listeners, no timelines
-    if (isMobile) return;
+    const mm = gsap.matchMedia();
 
-    const scrollAmount = sliderRef.current
-      ? sliderRef.current.scrollWidth - window.innerWidth
-      : 0;
+    // Desktop & laptop only
+    mm.add("(min-width: 1024px)", () => {
+      const scrollAmount = sliderRef.current
+        ? sliderRef.current.scrollWidth - window.innerWidth
+        : 0;
 
-    if (!isTablet) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: ".flavor-section",
-          start: "2% top",
-          end: `+=${scrollAmount + 1500}px`,
-          scrub: true,
-          pin: true,
-        },
-      });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".flavor-section",
+            start: "2% top",
+            end: `+=${scrollAmount + 1500}px`,
+            scrub: true,
+            pin: true,
+            invalidateOnRefresh: true,
+          },
+        })
+        .to(".flavor-section", {
+          x: `-${scrollAmount + 1500}px`,
+          ease: "power1.inOut",
+        });
 
-      tl.to(".flavor-section", {
-        x: `-${scrollAmount + 1500}px`,
-        ease: "power1.inOut",
-      });
-    }
-
-    const titleTl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".flavor-section",
-        start: "top top",
-        end: "bottom 80%",
-        scrub: true,
-      },
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".flavor-section",
+            start: "top top",
+            end: "bottom 80%",
+            scrub: true,
+          },
+        })
+        .to(".first-text-split", { xPercent: -30, ease: "power1.inOut" })
+        .to(".flavor-text-scroll", { xPercent: -22, ease: "power1.inOut" }, "<")
+        .to(".second-text-split", { xPercent: -10, ease: "power1.inOut" }, "<");
     });
 
-    titleTl
-      .to(".first-text-split", {
-        xPercent: -30,
-        ease: "power1.inOut",
-      })
-      .to(
-        ".flavor-text-scroll",
-        {
-          xPercent: -22,
-          ease: "power1.inOut",
-        },
-        "<"
-      )
-      .to(
-        ".second-text-split",
-        {
-          xPercent: -10,
-          ease: "power1.inOut",
-        },
-        "<"
-      );
-  }, [isTablet, isMobile]);
+    return () => mm.revert();
+  }, []);
 
   return (
-    <div ref={sliderRef} className="slider-wrapper">
-      <div className="flavors">
-        {["coffe-slider-1.png", "coffe-slider-2.png", "coffe-slider-3.png", "coffe-slider-4.png"].map(
-          (image, index) => {
-            const flavor = flavorless[index] || { name: `Flavor ${index + 1}` };
-            const cardGradients = [
-              "from-[#523122]/95 via-[#3a2014]/95 to-[#22130c]/95 border-[#c88e64]/40",
-              "from-[#7f3b2d]/95 via-[#5c271c]/95 to-[#3b1710]/95 border-[#e3a458]/40",
-              "from-[#4a3525]/95 via-[#322317]/95 to-[#1e140d]/95 border-[#faeade]/30",
-              "from-[#a26833]/95 via-[#70441e]/95 to-[#42260f]/95 border-[#fed775]/40",
-            ];
-            const rotations = ["-rotate-2", "rotate-2", "-rotate-1", "rotate-3"];
+    <div ref={sliderRef} className="slider-wrapper w-full">
+      <div
+        className="flavors grid grid-cols-1 sm:grid-cols-2 gap-8 px-4 sm:px-6 py-10
+                   lg:flex lg:flex-nowrap lg:w-max lg:gap-16 lg:px-10 lg:py-0"
+      >
+        {images.map((image, index) => {
+          const flavor = flavorless?.[index] || { name: `Flavor ${index + 1}` };
 
-            return isMobile ? (
-              <div
-                key={image}
-                className="flavor-card-container relative z-30 w-full max-w-[320px] sm:max-w-[360px] flex-none px-4 py-5"
-              >
-                <div
-                  className={`relative w-full h-[400px] rounded-3xl p-6 flex flex-col justify-between items-center overflow-hidden
-                    bg-gradient-to-b ${cardGradients[index % cardGradients.length]}
-                    border-2 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)]
-                    transform ${rotations[index % rotations.length]}
-                    backdrop-blur-md`}
-                >
-                  <div className="absolute -top-24 -left-24 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-
-                  <div className="w-full flex justify-between items-start z-10">
-                    <span className="text-xs uppercase tracking-[0.25em] text-[#faeade]/70 font-semibold px-3 py-1 rounded-full bg-black/20 backdrop-blur-sm border border-white/10">
-                      0{index + 1}
-                    </span>
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#faeade] px-3 py-1 rounded-full bg-[#faeade]/15 border border-[#faeade]/20">
-                      Signature
-                    </span>
-                  </div>
-
-                  <div className="relative w-full flex-1 flex items-center justify-center my-2 z-10 pointer-events-none select-none">
-                    <img
-                      src={`/${image}`}
-                      alt={flavor.name}
-                      className="max-h-[260px] object-contain filter drop-shadow-[0_20px_25px_rgba(0,0,0,0.6)]"
-                    />
-                  </div>
-
-                  <div className="w-full text-center z-10 pt-2 border-t border-white/10">
-                    <h3 className="text-xl font-bold uppercase text-[#faeade] tracking-wide">
-                      {flavor.name}
-                    </h3>
-                    <p className="text-xs text-[#faeade]/75 mt-0.5 font-paragraph">
-                      Crafted with premium roasted beans
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div
-                key={image}
-                className={`relative z-30 lg:w-[50vw] md:w-[90vw] lg:h-[70vh] md:h-[50vh] flex-none ${
-                  flavorless[index]?.rotation || ""
-                }`}
-              >
+          return (
+            <div
+              key={image}
+              className={`relative z-30 w-full max-w-[340px] sm:max-w-none mx-auto
+                          flex flex-col items-center justify-center
+                          lg:mx-0 lg:flex-none lg:w-[48vw] xl:w-[45vw] lg:h-[80vh]
+                          ${rotations[index % rotations.length]}`}
+            >
+              <div className="w-full h-[300px] sm:h-[340px] lg:h-full flex items-center justify-center pointer-events-none select-none">
                 <img
                   src={`/${image}`}
-                  alt={`Coffee slider ${index + 1}`}
-                  className="drinks"
+                  alt={flavor.name}
+                  loading="lazy"
+                  className="max-h-full max-w-full object-contain drop-shadow-[0_20px_25px_rgba(0,0,0,0.5)]"
                 />
               </div>
-            );
-          }
-        )}
+
+              <h3 className="mt-3 text-lg sm:text-xl lg:text-3xl font-bold uppercase text-[#faeade] tracking-wide text-center">
+                {flavor.name}
+              </h3>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
